@@ -4,28 +4,28 @@ import time
 # Decorador para registrar el tiempo de juego
 def registrar_tiempo_juego(funcion):
     def envoltorio(self, *args, **kwargs):
-        # Registrar el tiempo de inicio
+# Registrar el tiempo de inicio
         inicio = time.time()
-        # Ejecutar la función decorada
+# Ejecutar la función decorada
         resultado = funcion(self, *args, **kwargs)
-        # Registrar el tiempo de fin
+# Registrar el tiempo de fin
         fin = time.time()
-        # Calcular el tiempo jugado en minutos
+# Calcular el tiempo jugado en minutos
         tiempo_jugado = (fin - inicio) / 60
-        # Acumular el tiempo jugado
+# Acumular el tiempo jugado
         self.tiempo_jugado += tiempo_jugado
         return resultado
     return envoltorio
 
 class Jugador:
     def __init__(self, nombre):
-        # Inicializar el nombre del jugador y el tiempo jugado
+# Inicializar el nombre del jugador y el tiempo jugado
         self.nombre = nombre
         self.tiempo_jugado = 0  # Se inicia en 0 minutos
 
     @registrar_tiempo_juego
     def entrenar(self):
-        # Simular el entrenamiento del jugador
+# Simular el entrenamiento del jugador
         print(f"{self.nombre} está entrenando")
 
 # Crea una instancia del jugador "Eduard"
